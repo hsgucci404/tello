@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import tello	# tello.pyをインポート
-import time
+import time	# time.sleepを使いたいので
 
 # メイン関数本体
 def main():
