@@ -7,47 +7,43 @@ import pygame		# pygameでジョイスティックを読む
 def main():
 	# pygameの初期化とジョイスティックの初期化
 	pygame.init()
-	joy = pygame.joystick.Joystick(0)
+	joy = pygame.joystick.Joystick(0)	# ジョイスティック番号はjstest-gtkで確認しておく
 	joy.init()
 
 	# Telloクラスを使って，droneというインスタンス(実体)を作る
-	drone = tello.Tello('', 8889, command_timeout=.01)  
+	#   コマンドの応答タイムアウトを0.01秒(10ms)にして，rcコマンドの連送に耐えられるようにする
+	drone = tello.Tello('', 8889, command_timeout=.01 )
 
 	time.sleep(0.5)		# 通信が安定するまでちょっと待つ
-
-	current_time = time.time()	# 現在時刻の保存変数
-	pre_time = current_time		# 5秒ごとの'command'送信のための時刻変数
 
 	#Ctrl+cが押されるまでループ
 	try:
 		while True:
 			# Joystickの読み込み
-			rud = int( joy.get_axis(0)*100 )
-			ele = int( joy.get_axis(1)*-100 )
-			air = int( joy.get_axis(2)*100 )
-			thr = int( joy.get_axis(3)*-100 )
+			#   get_axisは　-1.0〜0.0〜+1.0 で変化するので100倍して±100にする
+			#   プラスマイナスの方向が逆の場合は-100倍して反転させる
+			a = int( joy.get_axis(2)*100 )		# aは左右移動
+			b = int( joy.get_axis(1)*-100 )		# bは前後移動
+			c = int( joy.get_axis(3)*-100 )		# cは上下移動
+			d = int( joy.get_axis(0)*100 )		# dは旋回
 			btn0 = joy.get_button(0)
 			btn1 = joy.get_button(1)
 			btn2 = joy.get_button(2)
 			btn3 = joy.get_button(3)
 			pygame.event.pump()		# イベントの更新
 
-			#print("ele=%d  rud=%d  thr=%d  air=%d  btn0=%d  btn1=%d  btn2=%d  btn3=%d"%(ele, rud, thr, air, btn0, btn1, btn2, btn3))
+			# プラスマイナスの方向や離陸/着陸に使うボタンを確認するためのprint文
+			#print("l/r=%d  f/b=%d  u/d=%d  cw/ccw=%d  btn0=%d  btn1=%d  btn2=%d  btn3=%d"%(a, b, c, d, btn0, btn1, btn2, btn3))
 
-			drone.send_command('rc %s %s %s %s'%(air, ele, thr, rud) )
+			# rcコマンドを送信
+			drone.send_command( 'rc %s %s %s %s'%(a, b, c, d) )
 
 			if btn1 == 1:		# 離陸
 				drone.takeoff()
-			elif btn2 == 1:	# 着陸
+			elif btn2 == 1:		# 着陸
 				drone.land()
 
 			time.sleep(0.03)	# 適度にウェイトを入れてCPU負荷を下げる
-
-			# 5秒おきに'command'を送って、死活チェックを通す
-			current_time = time.time()	# 現在時刻を取得
-			if current_time - pre_time > 5.0 :	# 前回時刻から5秒以上経過しているか？
-				drone.send_command('command')	# 'command'送信
-				pre_time = current_time			# 前回時刻を更新
 
 	except( KeyboardInterrupt, SystemExit):    # Ctrl+cが押されたら離脱
 		print( "SIGINTを検知" )
