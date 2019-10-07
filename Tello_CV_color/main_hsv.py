@@ -22,8 +22,8 @@ def main():
 		pass
 
 	# トラックバーの生成
-	cv2.createTrackbar("H_min", "OpenCV Window", 0, 255, nothing)
-	cv2.createTrackbar("H_max", "OpenCV Window", 128, 179, nothing)		# Hueの最大値は179
+	cv2.createTrackbar("H_min", "OpenCV Window", 0, 179, nothing)		# Hueの最大値は179
+	cv2.createTrackbar("H_max", "OpenCV Window", 128, 179, nothing)
 	cv2.createTrackbar("S_min", "OpenCV Window", 128, 255, nothing)
 	cv2.createTrackbar("S_max", "OpenCV Window", 255, 255, nothing)
 	cv2.createTrackbar("V_min", "OpenCV Window", 128, 255, nothing)
