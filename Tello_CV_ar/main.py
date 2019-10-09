@@ -38,7 +38,7 @@ def main():
 			corners, ids, rejectedImgPoints = aruco.detectMarkers(small_image, dictionary) #マーカを検出
 			aruco.drawDetectedMarkers(small_image, corners, ids, (0,255,0)) #検出したマーカ情報を元に，原画像に描画する
 
-			# 100回同じマーカーが見えたらコマンド送信する処理
+			# 50回同じマーカーが見えたらコマンド送信する処理
 			try:
 				if ids != None:	# idsが空(マーカーが１枚も認識されなかった)場合は何もしない
 					idno = ids[0,0]	# idsには複数のマーカーが入っているので，0番目のマーカーを取り出す
@@ -46,7 +46,7 @@ def main():
 					if idno == pre_idno:	# 今回認識したidnoが前回のpre_idnoと同じ時には処理
 						count+=1			# 同じマーカーが見えてる限りはカウンタを増やす
 
-						if count > 100:		# 100回同じマーカーが続いたら，コマンドを確定する
+						if count > 50:		# 50回同じマーカーが続いたら，コマンドを確定する
 							print("ID=%d"%(idno))
 							
 							if idno == 0:
