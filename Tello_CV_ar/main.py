@@ -72,6 +72,8 @@ def main():
 								drone.move_right(0.3)		# 右移動
 							
 							count = 0	# コマンド送信したらカウント値をリセット
+					else:
+						count = 0
 
 					pre_idno = idno	# 前回のpre_idnoを更新する
 				else:
