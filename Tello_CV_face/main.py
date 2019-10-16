@@ -22,7 +22,7 @@ def main():
 	cnt_frame = 0	# フレーム枚数をカウントする変数
 	pre_faces = []	# 顔検出結果を格納する変数
 	flag = 0		# 自動制御をON/OFFするフラグ
-
+cv2.waitKey
 	#Ctrl+cが押されるまでループ
 	try:
 		while True:
@@ -109,7 +109,7 @@ def main():
 			cv2.imshow('OpenCV Window', cv_image)	# ウィンドウに表示するイメージを変えれば色々表示できる
 
 			# (Y)OpenCVウィンドウでキー入力を1ms待つ
-			key = cv2.waitKey(33)
+			key = cv2.waitKey(1)
 			if key == 27:					# k が27(ESC)だったらwhileループを脱出，プログラム終了
 				break
 			elif key == ord('t'):
