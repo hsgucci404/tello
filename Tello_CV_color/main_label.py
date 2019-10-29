@@ -30,7 +30,6 @@ def main():
 	cv2.createTrackbar("V_min", "OpenCV Window", 128, 255, nothing)
 	cv2.createTrackbar("V_max", "OpenCV Window", 255, 255, nothing)
 
-	flag = 0
 	#Ctrl+cが押されるまでループ
 	try:
 		while True:
@@ -117,10 +116,6 @@ def main():
 				drone.move_up(0.3)			# 上昇
 			elif key == ord('f'):
 				drone.move_down(0.3)		# 下降
-			elif key == ord('1'):
-				flag = 1					# 追跡モードON
-			elif key == ord('2'):
-				flag = 0					# 追跡モードOFF
 
 			# (Z)5秒おきに'command'を送って、死活チェックを通す
 			current_time = time.time()	# 現在時刻を取得
