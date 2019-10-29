@@ -70,7 +70,7 @@ def main():
 			stats = np.delete(stats, 0, 0)
 			center = np.delete(center, 0, 0)
 
-			# 検出したオブジェクトの数だけ繰り返す
+			# 検出したラベルの数だけ繰り返す
 			for index in range(num_labels):
 				# ラベルのx,y,w,h,面積s,重心位置mx,myを取り出す
 				x = stats[index][0]
