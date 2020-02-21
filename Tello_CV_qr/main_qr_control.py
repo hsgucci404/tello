@@ -17,7 +17,7 @@ def main():
 	scanner.parse_config('enable')
 
 	pre_qr_msg = None	# 前回見えたQRコードのテキストを格納
-	count = 0			# 同じID番号が見えた回数を記憶する変数
+	count = 0		# 同じテキストが見えた回数を記憶する変数
 	commands = None		# 認識したQRコードをTelloのコマンドとして使う
 	command_index = 0	# 実行するコマンドの番号
 	flag = 0			# 自動制御のフラグは初期0
