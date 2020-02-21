@@ -83,7 +83,7 @@ def main():
 			# 自動制御フラグがON(=1)のときは，コマンド処理だけを行う
 			if flag == 1:
 				print commands[command_index]
-				key = commands[command_index]	# commandsの中には'TLudcwflrW'のどれかの文字が入っている
+				key = commands[command_index]	# commandsの中には'TLfblrudwcW'のどれかの文字が入っている
 				if key == 'T':
 					drone.takeoff()				# 離陸
 					time.sleep(5)
