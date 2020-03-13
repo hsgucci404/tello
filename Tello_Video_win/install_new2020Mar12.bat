@@ -437,4 +437,3 @@ switch (WScript.Arguments(0)){
 		break;
 	default:
 }
-	
