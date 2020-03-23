@@ -45,7 +45,7 @@ def main():
 			# (B)ここから画像処理
 			image = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)		# OpenCV用のカラー並びに変換する
 			small_image = cv2.resize(image, dsize=(480,360) )	# 画像サイズを半分に変更
-			bgr_image = small_image[250:359,0:479]				# 注目する領域(ROI)を(0,250)-(359,479)で切り取る
+			bgr_image = small_image[250:359,0:479]				# 注目する領域(ROI)を(0,250)-(479,359)で切り取る
 			hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)	# BGR画像 -> HSV画像
 
 			# トラックバーの値を取る
@@ -59,7 +59,7 @@ def main():
 			# inRange関数で範囲指定２値化
 			bin_image = cv2.inRange(hsv_image, (h_min, s_min, v_min), (h_max, s_max, v_max)) # HSV画像なのでタプルもHSV並び
 
-			kernel = np.ones((15,15),np.uint8)	# 10x10で膨張させる
+			kernel = np.ones((15,15),np.uint8)	# 15x15で膨張させる
 			dilation_image = cv2.dilate(bin_image,kernel,iterations = 1)	# 膨張して虎ロープをつなげる
 			#erosion_image = cv2.erode(dilation_image,kernel,iterations = 1)	# 収縮
 
