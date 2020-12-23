@@ -17,7 +17,7 @@ echo ------------------------------------------------------
 echo ------------------------------------------------------
 echo                Downloading python2.7                  
 echo ------------------------------------------------------
-::‚±‚ÌƒŒƒWƒXƒgƒŠƒL[‚ÍA•¡”‚Ìƒo[ƒWƒ‡ƒ“‚Ìssl‚¨‚æ‚Ñtls‚ÌƒTƒ|[ƒg‚ğ—LŒø‚É‚·‚é‚½‚ß‚Ég—p‚³‚êAŒö®‚ÌPython WebƒTƒCƒg‚Ö‚ÌƒAƒNƒZƒX‚ğ‹‘”Û‚·‚é–â‘è‚ğ‰ğŒˆ‚·‚é‚½‚ß‚Ég—p‚³‚ê‚Ü‚·B
+::ã“ã®ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚­ãƒ¼ã¯ã€è¤‡æ•°ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®sslãŠã‚ˆã³tlsã®ã‚µãƒãƒ¼ãƒˆã‚’æœ‰åŠ¹ã«ã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã•ã‚Œã€å…¬å¼ã®Python Webã‚µã‚¤ãƒˆã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã‚’æ‹’å¦ã™ã‚‹å•é¡Œã‚’è§£æ±ºã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v SecureProtocols /t REG_DWORD /d 2728 /f >nul
 set /a retryCount=0
 for %%# in (certutil.exe) do (
@@ -40,8 +40,8 @@ if "%MD5pass%" == "NO" (
     )
 )
 call :installmsiPackage %pythonPackage%
-::python2.7ŠÂ‹«•Ï”‚ğ’Ç‰Á‚·‚é
-::wmic‚Í‚·‚®‚É—LŒø‚É‚È‚ç‚È‚¢‚Ì‚ÅAset‚·‚é
+::python2.7ç’°å¢ƒå¤‰æ•°ã‚’è¿½åŠ ã™ã‚‹
+::wmicã¯ã™ãã«æœ‰åŠ¹ã«ãªã‚‰ãªã„ã®ã§ã€setã™ã‚‹
 echo %PATH%|findstr "c:\python27" >nul
 if %errorlevel% neq 0 (
     wmic ENVIRONMENT where "name='PATH' and username='<system>'" set VariableValue="%PATH%;c:\python27"
@@ -53,7 +53,7 @@ if %errorlevel% neq 0 (
     set "pathext=%pathext%;.PY;.PYM;"
 )
 :downpythonend
-::-------------------python pipƒCƒ“ƒXƒg[ƒ‹-------------------
+::-------------------python pipã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«-------------------
 echo ------------------------------------------------------
 echo                   Downloading pip                    
 echo ------------------------------------------------------
@@ -80,7 +80,7 @@ if "%MD5pass%" == "NO" (
 python %pipPackage%
 python -m pip install -U pip
 :downpipend
-::-------------------libboost-all-dev‚ÌƒCƒ“ƒXƒg[ƒ‹-------------------
+::-------------------libboost-all-devã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«-------------------
 echo ------------------------------------------------------
 echo                Downloading libboost                   
 echo ------------------------------------------------------
@@ -107,7 +107,7 @@ if "%MD5pass%" == "NO" (
 )
 call %libboostPackage% /SILENT /NORESTART
 :downlibboostend
-::-------------------ffmpeg‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÍALinux‚Ìlibavcodec-dev libswscale-dev‚Ì2‚Â‚ÉˆË‘¶‚µ‚Ü‚·-------------------
+::-------------------ffmpegã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã¯ã€Linuxã®libavcodec-dev libswscale-devã®2ã¤ã«ä¾å­˜ã—ã¾ã™-------------------
 echo ------------------------------------------------------
 echo                  Downloading ffmpeg                   
 echo ------------------------------------------------------
@@ -158,7 +158,7 @@ if "%MD5pass%" == "NO" (
 )
 call %vs2013package% /passive /NORESTART
 :downvs2013end
-::-------------------python-numpy python-matplotlib opencv-python‚ÌƒCƒ“ƒXƒg[ƒ‹(pip•û®)-------------------
+::-------------------python-numpy python-matplotlib opencv-pythonã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«(pipæ–¹å¼)-------------------
 echo ------------------------------------------------------
 echo                  Downloading numpy                    
 echo ------------------------------------------------------
@@ -176,7 +176,7 @@ echo                  Downloading pillow
 echo ------------------------------------------------------
 python -m pip install pillow
 :copydependencies
-::-------------------ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ‚Ì‚·‚×‚Ä‚Ìdll‚ğcF\ python27 \ lib \ site-packages‚É”z’u‚µ‚Ü‚·-------------------
+::-------------------ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã™ã¹ã¦ã®dllã‚’cï¼š\ python27 \ lib \ site-packagesã«é…ç½®ã—ã¾ã™-------------------
 echo ------------------------------------------------------
 echo                 Copying dependencies                  
 echo ------------------------------------------------------
@@ -195,7 +195,7 @@ goto :eof
 
 ::--------------------------------------------------------------------------------------------
 
-::-----------------ˆÈ‰º‚ÍMD5ƒ`ƒFƒbƒN‚Ì’è‹`ƒGƒŠƒA‚Å‚·------------------
+::-----------------ä»¥ä¸‹ã¯MD5ãƒã‚§ãƒƒã‚¯ã®å®šç¾©ã‚¨ãƒªã‚¢ã§ã™------------------
 :checkMD5
 set file=%~1
 call :MD5get %file% MD5
@@ -213,7 +213,7 @@ if "%MD5%" equ "%~2" (
 )
 goto :eof
 
-::-----------------ˆÈ‰º‚ÍMD5ƒ`ƒFƒbƒN‚Ì’è‹`ƒGƒŠƒA‚Å‚·------------------
+::-----------------ä»¥ä¸‹ã¯MD5ãƒã‚§ãƒƒã‚¯ã®å®šç¾©ã‚¨ãƒªã‚¢ã§ã™------------------
 :MD5get
 echo %~1
 for %%# in (certutil.exe) do (
@@ -246,15 +246,15 @@ if "%~2" neq "" (
 
 goto :eof
 
-::-----------------ˆÈ‰º‚ÍƒfƒBƒŒƒNƒgƒŠØ‚è‘Ö‚¦’è‹`ƒGƒŠƒA‚Å‚·------------------
-::ŠÇ—Òƒ‚[ƒh‚ÅÀs‚·‚é‚ÆAƒfƒtƒHƒ‹ƒg‚ÌƒpƒX‚ª•ÏX‚³‚êAƒfƒBƒŒƒNƒgƒŠ‚Í‚±‚±‚É–ß‚è‚Ü‚·
+::-----------------ä»¥ä¸‹ã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåˆ‡ã‚Šæ›¿ãˆå®šç¾©ã‚¨ãƒªã‚¢ã§ã™------------------
+::ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã§å®Ÿè¡Œã™ã‚‹ã¨ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ‘ã‚¹ãŒå¤‰æ›´ã•ã‚Œã€ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ã“ã“ã«æˆ»ã‚Šã¾ã™
 :setdir
 set char=%~dp0%
 %char:~0,2%
 cd  %~dp0%
 goto :eof
 
-::-----------------ˆÈ‰º‚Íƒo[ƒWƒ‡ƒ“ŠÖ”’è‹`ƒGƒŠƒA‚Å‚·------------------
+::-----------------ä»¥ä¸‹ã¯ãƒãƒ¼ã‚¸ãƒ§ãƒ³é–¢æ•°å®šç¾©ã‚¨ãƒªã‚¢ã§ã™------------------
 :configx86orx64
 IF %PROCESSOR_ARCHITECTURE% == AMD64 (
     set versionFlag=win64
@@ -272,7 +272,7 @@ if %versionFlag%==win64 (
     set pipPackage=get-pip.py
     set pipMD5="7036ca015e814fc2619fdb0b73f2ed19"
 
-    set ffmpegDown="https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-12-21-12-38/ffmpeg-N-100455-g5dbabb020e-win64-gpl-shared.zip"
+    set ffmpegDown="https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-12-22-12-37/ffmpeg-N-100455-g5dbabb020e-win64-gpl.zip"
     set ffmpegPackage=ffmpeg-N-100455-g5dbabb020e-win64-gpl-shared.zip
     set ffmpegMD5="fc376995d94dc50949555202f5a435c4"
 
@@ -314,7 +314,7 @@ if %versionFlag%==win64 (
 
 goto :eof
 
-::-----------------‚±‚ê‚ªh264ŠÖ”’è‹`—Ìˆæ‚Å‚·------------------
+::-----------------ã“ã‚ŒãŒh264é–¢æ•°å®šç¾©é ˜åŸŸã§ã™------------------
 :h264install
 cd h264decoder
 if exist build (
@@ -328,7 +328,7 @@ cmake ..
 make
 goto :eof
 
-::-----------------ˆÈ‰º‚Íƒ_ƒEƒ“ƒ[ƒh‹@”\’è‹`ƒGƒŠƒA‚Å‚·------------------
+::-----------------ä»¥ä¸‹ã¯ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ©Ÿèƒ½å®šç¾©ã‚¨ãƒªã‚¢ã§ã™------------------
 :down
 echo Source:      "%~1"
 echo Destination: "%~f2"
@@ -338,7 +338,7 @@ cscript -nologo -e:jscript "%~f0" "download" "%~1" "%~2"
 echo ------------------------------------------------------
 goto :eof
 
-::-----------------‰ğ“€‹@”\‚Ì’è‹`ƒGƒŠƒA‚ÍŸ‚Ì‚Æ‚¨‚è‚Å‚·------------------
+::-----------------è§£å‡æ©Ÿèƒ½ã®å®šç¾©ã‚¨ãƒªã‚¢ã¯æ¬¡ã®ã¨ãŠã‚Šã§ã™------------------
 :unpack
 echo Source:      "%~f1"
 echo Destination: "%~f2"
@@ -347,7 +347,7 @@ cscript -nologo -e:jscript "%~f0" "unpack" "%~1" "%~2" "%~dp0"
 echo Unpack "%~1" OK!
 echo ------------------------------------------------------
 goto :eof
-::-----------------ˆÈ‰º‚ÍƒCƒ“ƒXƒg[ƒ‹‹@”\’è‹`ƒGƒŠƒA‚Å‚·-----------------
+::-----------------ä»¥ä¸‹ã¯ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ©Ÿèƒ½å®šç¾©ã‚¨ãƒªã‚¢ã§ã™-----------------
 :installmsiPackage
 echo Source:      "%~f1"
 echo Strat installing "%~f1"...
